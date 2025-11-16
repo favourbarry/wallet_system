@@ -1,8 +1,8 @@
 const db = require('../../utils/database');
-
+const apiKeyService = require('./apikeyservice');
 class WalletService {
     createWallet(data) {
-        return new Promise((resolve, reject) => {
+        return new Promise(async(resolve, reject) => {
             const { firstName, lastName, email, balance, currency_id } = data;
             
             db.query('SELECT * FROM wallets WHERE email = ? and currency_id = ?', [email, currency_id], (err, results) => {
